@@ -1,0 +1,103 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org" xmlns:bg="ignored" id="ng-app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title ng-bind="blog.title ? blog.title : '今夕何夕？'"></title>
+    <meta name="description" content="{{ blog.meta.summary ? Util.removeHtmlTags(blog.meta.summary) : 'Martin Liu\'s Blog'}}">
+    <!-- START: For SEO -->
+    <meta name="fragment" content="!">
+    <link rel="canonical" href="http://service.prerender.io/http://martin-liu.github.io/?_escaped_fragment_=" />
+    <script>
+     // try this since google crawlers now can run javascript
+     var hash = location.hash.split('#!');
+     if (hash.length == 2 && hash[1] != '/'){
+       document.head.querySelector('link').href += hash[1];
+     }
+    </script>
+    <!-- END: For SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <base href="/">
+    <link rel="shortcut icon">
+
+    <link rel="stylesheet" href="css/styles.lib.min.4645603e.css">
+
+    <link rel="stylesheet" href="css/styles.min.40bcc1d8.css">
+
+    <!--[if lte IE 8]>
+    <script type="text/javascript">
+    window.unSupport = true;
+    location.href = 'notsupport.html';
+    </script>
+    <![endif]-->
+  </head>
+  <body ng-animate="{enter: 'animated fadeInX'}" ng-cloak style="overflow-x: hidden">
+    <!-- START:HEADER -->
+    <div headroom intro-step="2" style="min-height:45px"
+         class="intro-step navbar navbar-inverse navbar-fixed-top animated slideInDown">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="col-lg-8 col-lg-offset-1">
+            <ul class="nav navbar-nav">
+              <li class="float-shadow">
+                <a style="color:#fff">今夕何夕？</a>
+              </li>
+              <li class="float-shadow"
+                  ng-class="{active: currentPage == route.params.name}"
+                  ng-repeat="route in config.routes">
+                <a ng-href="#!{{route.url}}"
+                   ng-if="!route.params.hide" ng-bind="route.params.label"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- fork me on github -->
+    <a href="https://github.com/martin-liu/martin-liu.github.io" target="_blank"><img style="z-index:10000;position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <!-- END:HEADER -->
+
+    <!-- BODY -->
+    <div class="app animate-hinge container">
+      <div class="col-lg-8 col-lg-offset-2" ng-view></div>
+    </div>
+
+    <script src="js/scripts.lib.min.da5feb80.js"></script>
+
+    <script src="js/scripts.min.642f81fa.js"></script>
+
+
+
+    <!-- load scripts dynamically-->
+    <script>
+     function addScript(src){
+       var el = document.createElement("script");
+       el.src = src;
+       var s = document.getElementsByTagName("script")[0];
+       s.parentNode.insertBefore(el, s);
+     }
+
+     // duoshuo
+     var duoshuoQuery = {
+       short_name: 'martin-liu'
+     }
+
+     // baidu statistics
+     var _hmt = _hmt || [];
+     _hmt.push(['_setAutoPageview', false]);
+
+     var scriptSrcs = [
+       'http://static.duoshuo.com/embed.unstable.js', // duoshuo
+       '//hm.baidu.com/hm.js?a67e974dea316e70836c07c3e3576a29' // baidu statistics
+     ]
+
+     for(var i = 0; i < scriptSrcs.length; i++){
+       addScript(scriptSrcs[i]);
+     }
+    </script>
+
+    <!-- 社会化分享, JiaThis Button BEGIN -->
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?move=0" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+  </body>
+</html>

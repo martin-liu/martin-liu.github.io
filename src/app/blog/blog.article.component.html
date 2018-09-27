@@ -8,9 +8,12 @@
 
 <br/>
 <br/>
-<hr/>
-<p>公众号:</p>
-<img width="120" src="/assets/qrcode_wechat.jpg"/>
+
+<div *ngIf="article && article.user.login == 'martin-liu'">
+  <hr/>
+  <p>公众号:</p>
+  <img width="120" src="/assets/qrcode_wechat.jpg"/>
+</div>
 
 <hr style="margin-top: 50px">
 <div nz-row nzType="flex" nzJustify="space-between" nzAlign="bottom" style="margin-bottom: 30px">
@@ -30,8 +33,7 @@
     <nz-card class="m-comment" [nzBodyStyle]="{'font-size': '1em'}">
       <nz-card-meta nzTitle="{{ comment.title }}" [nzAvatar]="avatarTemplate"></nz-card-meta>
       <nz-divider></nz-divider>
-      <p class="m-comment-body">
-        {{ comment.body }}
+      <p class="m-comment-body" [innerHtml]="comment.body">
       </p>
     </nz-card>
     <ng-template #avatarTemplate>

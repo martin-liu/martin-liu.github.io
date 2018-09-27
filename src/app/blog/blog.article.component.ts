@@ -4,6 +4,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { BlogService } from './blog.service';
 import { switchMap } from 'rxjs/operators';
 
+const delimeter = '----------!!##!!----------';
+
 @Component({
   selector: 'm-blog-article',
   templateUrl: './blog.article.component.html',
@@ -49,6 +51,15 @@ export class BlogArticleComponent {
             }
             return c;
           });
+
+          let markdown = blog.allComments.map(c => c.body).join(delimeter);
+          this.blogService.renderMarkdown$(markdown)
+            .subscribe(d => {
+              let htmls = d.split(delimeter);
+              blog.allComments.forEach((c, i) => {
+                c.body = htmls[i];
+              })
+            });
         });
     }
   }

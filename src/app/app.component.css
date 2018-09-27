@@ -1,0 +1,17 @@
+.m-header {
+  position: fixed;
+  width: 100%;
+  height: 45px;
+  z-index: 99999;
+}
+
+.m-menu {
+  line-height: 45px;
+}
+
+.m-content {
+  padding: 0 50px;
+  margin-top: 45px;
+  padding-top: 20px;
+  background-color: #fff;
+}

@@ -31,8 +31,8 @@ export class BlogComponent {
         if (markdownText) {
           // render summaries markdown asynchronously
           this.blogService.renderMarkdown$(markdownText)
-            .subscribe(({response}) => {
-              const summaries = response.split(delimeter2);
+            .subscribe(d => {
+              const summaries = d.split(delimeter2);
               validBlogs.forEach((blog, i) => {
                 let [html1, html2] = summaries[i].split(delimeter);
                 if (html1 && html2) {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { formatDate } from '@angular/common';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { BlogService } from './blog.service';
 import { switchMap } from 'rxjs/operators';
@@ -6,6 +7,7 @@ import { switchMap } from 'rxjs/operators';
 @Component({
   selector: 'm-blog-article',
   templateUrl: './blog.article.component.html',
+  styleUrls: ['./blog.article.component.css'],
   providers: [BlogService]
 })
 export class BlogArticleComponent {
@@ -21,14 +23,38 @@ export class BlogArticleComponent {
       switchMap((params: ParamMap) => this.blogService.getBlog$(owner, repo, params.get('id')))
     ).subscribe(blog => {
       this.article = blog;
-      if (!blog.markdownRendered) {
-        this.blogService.renderMarkdown$(blog.body)
-          .subscribe(({response}) => {
-            this.article.body = response;
-            this.article.markdownRendered = true;
-          })
-      }
+      this.processBlog(this.article);
     });
+  }
+
+  processBlog(blog) {
+    if (!blog.markdownRendered) {
+      this.blogService.renderMarkdown$(blog.body)
+        .subscribe(d => {
+          blog.body = d;
+          blog.markdownRendered = true;
+        });
+    }
+
+    if (!blog.allComments || !blog.allComments.length) {
+      this.blogService.getBlogComments$(blog)
+        .subscribe((comments: Array<any>) => {
+          blog.allComments = comments.map(c => {
+            const createTime = new Date(c.created_at);
+            const updateTime = new Date(c.updated_at);
+
+            c.title = `${c.user.login} commented on ${formatDate(createTime, 'yyyy-MM-dd', 'en-US')}`;
+            if (updateTime.getTime() > createTime.getTime()) {
+              c.title += `, edited on ${formatDate(updateTime, 'yyyy-MM-dd', 'en-US')}`;
+            }
+            return c;
+          });
+        });
+    }
+  }
+
+  addGithubComment(blog) {
+    window.open(blog.html_url);
   }
 
 }

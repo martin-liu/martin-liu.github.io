@@ -11,3 +11,13 @@ h1, h2 {
 h1, h2, h3, h4, h5 {
   padding-left: 0px;
 }
+
+.m-comment {
+  margin: 10px 0;
+}
+
+.m-comment-body {
+  font-size: 1.2em;
+  white-space: pre-wrap;
+  word-break: break-all;
+}

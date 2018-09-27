@@ -11,3 +11,31 @@
 <hr/>
 <p>公众号:</p>
 <img width="120" src="/assets/qrcode_wechat.jpg"/>
+
+<hr style="margin-top: 50px">
+<div nz-row nzType="flex" nzJustify="space-between" nzAlign="bottom">
+  <div nz-col nzSpan="8">
+    <div *ngIf="article">
+      {{ article.comments }} comments
+    </div>
+  </div>
+  <div nz-col nzSpan="16">
+    <button nz-button nzSize="large" nzType="dashed" style="float: right"
+      (click)="addGithubComment(article)">Add Comment In Github</button>
+  </div>
+</div>
+
+<div *ngIf="article && article.allComments">
+  <div *ngFor="let comment of article.allComments">
+    <nz-card class="m-comment" [nzBodyStyle]="{'font-size': '1em'}">
+      <nz-card-meta nzTitle="{{ comment.title }}" [nzAvatar]="avatarTemplate"></nz-card-meta>
+      <nz-divider></nz-divider>
+      <p class="m-comment-body">
+        {{ comment.body }}
+      </p>
+    </nz-card>
+    <ng-template #avatarTemplate>
+      <nz-avatar nzIcon="anticon anticon-user" nzSrc="{{ comment.user.avatar_url }}"></nz-avatar>
+    </ng-template>
+  </div>
+</div>

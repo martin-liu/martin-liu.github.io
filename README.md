@@ -7,7 +7,7 @@ This is a simple blog system based on github issues.
 3. In `settings` page, ensure `Issues` checkbox is checked under `Features` block.
 4. Create an issue and fill title and body, then add a label named `blog` to it. You can also add code like `<!-- {"summary": "this is a test summary"} -->` in your issue body, this will be used as summary of this blog article.
 5. Your blog website should be `https://YOUR_LOGIN.github.io`.
-6. [Note] When you fork the project, it may take a while for github to generate pages.
+6. [Note] When you fork the project, it may take a while for github to generate pages. Sometime (rarely) it doesn't generate page, you could try to add a commit in `master` branch to trigger it again.
 7. [Note] To customize the blog system, or update to latest version of system, please refer Advanced info.
 
 # Advanced

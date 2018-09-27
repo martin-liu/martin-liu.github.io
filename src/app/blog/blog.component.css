@@ -1,0 +1,18 @@
+.summary {
+  margin-left: 10px;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.blog-title-link {
+  color: #333;
+}
+
+.blog-title-link:hover {
+  text-decoration:none;
+}

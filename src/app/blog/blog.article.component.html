@@ -1,0 +1,13 @@
+<nz-spin *ngIf="!article" [nzSize]="'large'" nz-col nzSpan="1" nzOffset="11"></nz-spin>
+<div *ngIf="article">
+  <h2 class="align-center">{{ article.title }}</h2>
+  <p class="created-at">{{  article.created_at | date:'yyyy-MM-dd hh:mm:ss' }}</p>
+  <br/>
+  <div class="blog-content markdown-body" [innerHtml]="article.body"></div>
+</div>
+
+<br/>
+<br/>
+<hr/>
+<p>公众号:</p>
+<img width="120" src="/assets/qrcode_wechat.jpg"/>

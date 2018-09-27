@@ -28,7 +28,7 @@ export class BlogService {
   }
 
   getBlogs$(owner, repo) {
-    const url = `https://api.github.com/repos/${owner}/${repo}/issues?creator=${owner}&labels=blog&page=1&per_page=20&state=open`;
+    const url = `https://api.github.com/repos/${owner}/${repo}/issues?labels=blog&page=1&per_page=30&state=open`;
     if (cache[url]) {
       return of(cache[url]);
     } else {

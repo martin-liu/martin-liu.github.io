@@ -14,10 +14,10 @@ This is a simple blog system based on github issues.
 ## Update to latest version
 Please replace `YOUR_LOGIN` to your github login
 1. `git clone https://github.com/YOUR_LOGIN/YOUR_LOGIN.github.io`
-2. `cd YOUR_LOGIN.github.io && git checkout master`
+2. `cd YOUR_LOGIN.github.io`
 3. `git remote add upstream https://github.com/martin-liu/martin-liu.github.io`
-4. `git pull upstream master`
-5. `git push origin master`
+4. `git fetch upstream master && git checkout --track upstream/master`
+5. `git push origin master -f`
 
 ## Development server
 You need to install `nodeJS`, then run `npm install` to install dependencies.

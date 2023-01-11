@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { formatDate } from '@angular/common';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { BlogService } from './blog.service';
 import { switchMap } from 'rxjs/operators';
 
@@ -45,7 +45,7 @@ export class BlogArticleComponent {
             const createTime = new Date(c.created_at);
             const updateTime = new Date(c.updated_at);
 
-            c.title = `${c.user.login} commented on ${formatDate(createTime, 'yyyy-MM-dd', 'en-US')}`;
+            c.title = ` commented on ${formatDate(createTime, 'yyyy-MM-dd', 'en-US')}`;
             if (updateTime.getTime() > createTime.getTime()) {
               c.title += `, edited on ${formatDate(updateTime, 'yyyy-MM-dd', 'en-US')}`;
             }

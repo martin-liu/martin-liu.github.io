@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ajax } from 'rxjs/ajax';
 import { of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { environment } from './../../environments/environment';
 
 const cache = {};

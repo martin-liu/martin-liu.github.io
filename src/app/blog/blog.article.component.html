@@ -31,13 +31,19 @@
 <div *ngIf="article && article.allComments">
   <div *ngFor="let comment of article.allComments">
     <nz-card class="m-comment" [nzBodyStyle]="{'font-size': '1em'}">
-      <nz-card-meta nzTitle="{{ comment.title }}" [nzAvatar]="avatarTemplate"></nz-card-meta>
+      <nz-card-meta [nzTitle]="titleTemplate" [nzAvatar]="avatarTemplate"></nz-card-meta>
       <nz-divider></nz-divider>
       <p class="m-comment-body" [innerHtml]="comment.body">
       </p>
     </nz-card>
+    <ng-template #titleTemplate>
+      <a class="comment-link" href="{{ comment.user.html_url }}" target="_blank">{{ comment.user.login }}</a>
+      <a class="comment-link" href="{{ comment.html_url }}" target="_blank">{{ comment.title }}</a>
+    </ng-template>
     <ng-template #avatarTemplate>
-      <nz-avatar nzIcon="anticon anticon-user" nzSrc="{{ comment.user.avatar_url }}"></nz-avatar>
+        <a href="{{ comment.user.html_url }}" target="_blank">
+          <nz-avatar nzIcon="anticon anticon-user" nzSrc="{{ comment.user.avatar_url }}"></nz-avatar>
+        </a>
     </ng-template>
   </div>
 </div>

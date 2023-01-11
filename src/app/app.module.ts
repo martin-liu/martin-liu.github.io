@@ -33,7 +33,7 @@ const appRoutes: Routes = [
     AboutComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes, { useHash: true, relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(appRoutes, { useHash: true }),
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,

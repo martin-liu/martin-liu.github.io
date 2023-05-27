@@ -1,30 +1,102 @@
-# Blog based on Github issues
-This is a simple blog system based on github issues.
 
-## How to use it
-1. `fork` this project
-2. Go to `settings`, rename project to `YOUR_LOGIN.github.io`, for example, your github login is `abc`, then `abc.github.io`.
-3. In `settings` page, ensure `Issues` checkbox is checked under `Features` block.
-4. Create an issue and fill title and body, then add a label named `blog` to it. You can also add code like `<!-- {"summary": "this is a test summary"} -->` in your issue body, this will be used as summary of this blog article.
-5. Your blog website should be `https://YOUR_LOGIN.github.io`.
-6. [Note] When you fork the project, it may take a while for github to generate pages. Sometime it doesn't generate page, you could try to add a commit in `master` branch to trigger it. (e.g. go to `master` branch from github, then add a README with any content)
-7. [Note] To customize the blog system, or update to latest version of system, please refer Advanced info.
+[中文版本说明](./README_CN.md)
 
-# Advanced
-## Update to latest version
-Please replace `YOUR_LOGIN` to your github login
-1. `git clone https://github.com/YOUR_LOGIN/YOUR_LOGIN.github.io`
-2. `cd YOUR_LOGIN.github.io`
-3. `git remote add upstream https://github.com/martin-liu/martin-liu.github.io`
-4. `git fetch upstream master && git checkout --track upstream/master`
-5. `git push origin master -f`
+## 👏🏻 Introduction
 
-## Development server
-You need to install `nodeJS`, then run `npm install` to install dependencies.
+This is a minimalist, beautiful, responsive blogging program written in Astro.
 
-Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Preview
 
-## Build & deploy
-Run `npm run build` to build the project.
+[https://yufengbiji.com](https://yufengbiji.com)  
 
-Run `./bin/deploy.sh` to build & deploy the project to github pages.
+[https://astro.yufengbiji.com](https://astro.yufengbiji.com)
+
+### Home
+
+![首页](./public/preview/preview_index.png)
+
+### Dark mode
+
+![文章黑暗模式](./public/preview/preview_dark.png?)
+
+### Normal article
+
+![普通文章模式](./public/preview/preview_light.png)
+
+### Syntax highlighting
+
+![Syntax](./public/preview/preview_syntaxHighlighting.png)
+
+### Three display model of images
+
+![](./public/preview/preview_different_mode.png)
+
+The three display modes of images are: `wide`, `big`, `inline`.
+When you edit your markdown file, you can add `wide` or `big` or `inline` to the image alt, like this:
+
+```markdown
+![alt content|wide](a.png)
+```
+
+<strong>The Separator is `|`, and the default mode is `big`.</strong>
+
+## 🚀 Project Structure
+
+In this Astro project, you'll see the following folders and files:
+
+```
+|-- README.md
+|-- astro.config.mjs
+|-- package.json
+|-- public
+|   |-- favicon.svg
+|   `-- static
+|-- src
+|   |-- components
+|   |   |-- BaseHead.astro // common <head> tags
+|   |   |-- Footer.astro
+|   |   |-- Header.astro
+|   |   `-- Navigation.astro
+|   |-- consts.js
+|   |-- env.d.ts
+|   |-- layouts
+|   |   |-- BaseLayout.astro
+|   |   |-- MarkdownPost.astro
+|   |   |-- MoreTile.astro
+|   |   `-- Tile.astro
+|   |-- pages
+|   |   |-- about.astro
+|   |   |-- archive.astro
+|   |   |-- index.astro
+|   |   |-- posts 
+|   |   |   |-- some markdown post.md // markdown post 
+|   |   |-- rss.xml.js // RSS feed
+|   |   `-- tags
+|   |       `-- [tag].astro // dynamic route of all posts with a given tag
+|   |-- styles
+|   |   `-- global.css // global styles
+|   `-- utils.js
+```
+
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `npm install`          | Installs dependencies                            |
+| `npm run dev`          | Starts local dev server at `localhost:3000`      |
+| `npm run build`        | Build your production site to `./dist/`          |
+| `npm run preview`      | Preview your build locally, before deploying     |
+| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

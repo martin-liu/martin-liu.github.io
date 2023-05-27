@@ -1,0 +1,81 @@
+---
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseHead /> component.
+import "../styles/global.css";
+const { image = "/preview.png", frontmatter } = Astro.props;
+import { SITE_URL, SITE_TITLE, SITE_LANG, SITE_AUTHOR } from "../consts";
+const { pathname } = Astro.url;
+
+const title = frontmatter
+    ? `${frontmatter.title} - ${SITE_TITLE}`
+    : Astro.props.title;
+const description = frontmatter
+    ? frontmatter.description
+    : Astro.props.description;
+const author = frontmatter ? frontmatter.author : SITE_AUTHOR;
+const tags = frontmatter ? frontmatter.tags.join() : "";
+const cover = frontmatter ? frontmatter.cover.url : image;
+const date = new Date();
+const isoNow = date.toISOString();
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content={frontmatter ? frontmatter.keywords ? frontmatter.keywords : SITE_TITLE : SITE_TITLE} />
+
+<!-- DIY Meta Tags -->
+{
+    frontmatter
+        ? frontmatter.meta
+            ? frontmatter.meta.map((elem) => {
+                  return (
+                  <meta name={elem.name} content={elem.content} />
+                  );
+              })
+            : ""
+        : ""
+}
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:url" content={`${SITE_URL}${pathname}`} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(cover, `${SITE_URL}${pathname}`)} />
+<meta property="og:updated_time" content={isoNow} />
+<meta property="og:locale" content={SITE_LANG} />
+
+<meta property="article:author" content={author} />
+<meta property="article:tag" content={tags} />
+<meta
+    property="article:published_time"
+    content={frontmatter ? frontmatter.pubDate : isoNow}
+/>
+<meta property="article:modified_time" content={isoNow} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={`${SITE_URL}${pathname}`} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta
+    property="twitter:image"
+    content={new URL(cover, `${SITE_URL}${pathname}`)}
+/>
+
+<!-- Sitemap -->
+<link rel="sitemap" href="/sitemap-index.xml" />

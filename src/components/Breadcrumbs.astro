@@ -16,6 +16,8 @@ breadcrumbList[0] === "posts" &&
   <ul>
     <li>
       <a href="/">Home</a>
+    </li>
+    <li>
       <span aria-hidden="true">&#62;</span>
     </li>
     {
@@ -31,10 +33,14 @@ breadcrumbList[0] === "posts" &&
             </span>
           </li>
         ) : (
-          <li>
-            <a href={`/${breadcrumb}`}>{breadcrumb}</a>
-            <span aria-hidden="true">&#62;</span>
-          </li>
+          <>
+            <li>
+              <a href={`/${breadcrumb}`}>{breadcrumb}</a>
+            </li>
+            <li>
+              <span aria-hidden="true">&#62;</span>
+            </li>
+          </>
         )
       )
     }

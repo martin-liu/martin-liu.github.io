@@ -1,8 +1,7 @@
 # build output
 dist/
-# generated types
-.astro/
-.vscode/
+.output/
+
 # dependencies
 node_modules/
 
@@ -19,3 +18,18 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# ignore .astro directory
+.astro
+
+# ignore Jampack cache files
+.jampack/
+
+# yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*

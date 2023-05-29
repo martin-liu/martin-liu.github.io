@@ -1,79 +1,107 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Tile from "../layouts/Tile.astro";
-import MoreTile from "../layouts/MoreTile.astro";
-const allPosts = await Astro.glob("../pages/posts/*.md");
-allPosts.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate));
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import LinkButton from "@components/LinkButton.astro";
+import Hr from "@components/Hr.astro";
+import Card from "@components/Card";
+import Socials from "@components/Socials.astro";
+import getSortedPosts from "@utils/getSortedPosts";
+import slugify from "@utils/slugify";
+import { SOCIALS } from "@config";
+
+const posts = await getCollection("blog");
+
+const sortedPosts = getSortedPosts(posts);
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+
+const socialCount = SOCIALS.filter(social => social.active).length;
 ---
 
-<BaseLayout>
-  <section class="everydayfeed">
-    <div class="section-content">
-      <h2 class="section-head">最新文章</h2>
-      <ul role="list" class="section-tiles">
+<Layout>
+  <Header />
+  <main id="main-content">
+    {
+      featuredPosts.length > 0 && (
+        <>
+          <section id="featured">
+            <h2>Featured</h2>
+            <ul>
+              {featuredPosts.map(({ data }) => (
+                <Card
+                  href={`/posts/${slugify(data)}`}
+                  frontmatter={data}
+                  secHeading={false}
+                />
+              ))}
+            </ul>
+          </section>
+          <Hr />
+        </>
+      )
+    }
+
+    <section id="recent-posts">
+      <h2>Recent Posts</h2>
+      <ul>
         {
-          // tile-hero
-          allPosts.slice(0, 1).map((post) => {
-            return (
-              <Tile title={post.frontmatter.title} href={post.url} date={post.frontmatter.pubDate} tags={post.frontmatter.tags} cover={post.frontmatter.cover.url} level="1" />
-            );
-          })
-        }
-
-        {
-          // tile-2up
-          allPosts.slice(1, 5).map((post) => {
-            return (
-              <Tile title={post.frontmatter.title} href={post.url} date={post.frontmatter.pubDate} tags={post.frontmatter.tags} cover={post.frontmatter.cover.url} level="2" />
-            );
-          })
-        }
-
-        {
-          // tile-3up
-          allPosts.slice(5, 11).map((post) => {
-            return (
-              <Tile title={post.frontmatter.title} href={post.url} date={post.frontmatter.pubDate} tags={post.frontmatter.tags} cover={post.frontmatter.cover.url} level="3" />
-            );
-          })
-        }
-      </ul>
-    </div>
-  </section>
-
-  <section class="more-from-newsroom">
-    <div class="section-content">
-      <h2 class="section-head">更多文章</h2>
-   
-
-      <ul role="list" class="section-tiles">
-
-        {
-          // tile-2up
-          allPosts.slice(0, 6).map((post) => {
-            return (
-              <MoreTile title={post.frontmatter.title} href={post.url} date={post.frontmatter.pubDate} tags={post.frontmatter.tags} cover={post.frontmatter.cover.square !== "" ? post.frontmatter.cover.square : post.frontmatter.cover.url} />
-            );
-          })
+          sortedPosts.map(
+            ({ data }, index) =>
+              index < 6 && (
+                <Card
+                  href={`/posts/${slugify(data)}`}
+                  frontmatter={data}
+                  secHeading={false}
+                />
+              )
+          )
         }
       </ul>
-      <div class="view-archive-wrapper">
-        <a href="/archive" class="cta-primary-light" data-analytics-region="router" data-analytics-title="view archive">阅读历史文章</a>
+      <div class="all-posts-btn-wrapper">
+        <LinkButton href="/posts">
+          All Posts
+          <svg xmlns="http://www.w3.org/2000/svg"
+            ><path
+              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+            ></path>
+          </svg>
+        </LinkButton>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <script is:inline>
-    document.addEventListener("DOMContentLoaded", function () {
-      var script = document.createElement("script");
-      script.src = "/static/js/animation.js";
-      document.head.appendChild(script);
+  <Footer />
+</Layout>
 
-      script.onload = function () {
-        console.log("lazyload.js loaded");
-        // when layout is loaded, load the images
-        initImage();
-      };
-    });
-  </script>
-</BaseLayout>
+<style>
+  /* ===== Hero Section ===== */
+  #hero {
+    @apply pb-6 pt-8;
+  }
+  #hero h1 {
+    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+  }
+  #hero p {
+    @apply my-2;
+  }
+  .social-wrapper {
+    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
+  }
+  .social-links {
+    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+  }
+
+  /* ===== Featured & Recent Posts Sections ===== */
+  #featured,
+  #recent-posts {
+    @apply pb-6 pt-12;
+  }
+  #featured h2,
+  #recent-posts h2 {
+    @apply text-2xl font-semibold tracking-wide;
+  }
+  .all-posts-btn-wrapper {
+    @apply my-8 text-center;
+  }
+</style>

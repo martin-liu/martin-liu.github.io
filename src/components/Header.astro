@@ -85,12 +85,22 @@ const { activeNav } = Astro.props;
               aria-label="rss feed"
               title="RSS Feed"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
-                ><path
-                  d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-                ></path><path
-                  d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-                ></path><circle cx="6" cy="18" r="2"></circle>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-rss"
+                width="24"
+                height="24"
+                viewBox="0 0 27 27"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                <path d="M4 4a16 16 0 0 1 16 16"></path>
+                <path d="M4 11a9 9 0 0 1 9 9"></path>
               </svg>
             </a>
           </li>
@@ -146,7 +156,7 @@ const { activeNav } = Astro.props;
     @apply flex w-full flex-col items-center bg-skin-fill sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0;
   }
   nav ul {
-    @apply mt-4 grid w-44 grid-cols-2 grid-rows-4 gap-x-2 gap-y-2 sm:ml-0 sm:mt-0 sm:w-auto sm:gap-x-5 sm:gap-y-0;
+    @apply mt-4 w-44 gap-x-2 gap-y-2 sm:ml-0 sm:mt-0 sm:w-auto sm:gap-x-5 sm:gap-y-0;
   }
   nav ul li {
     @apply col-span-2 flex items-center justify-center;

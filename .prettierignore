@@ -11,3 +11,5 @@
 !.prettierrc
 !.eslintrc.js
 !README.md
+
+/public/favicon.ico

@@ -1,6 +1,6 @@
 # Introduction
 
-Blog system based on https://github.com/satnaing/astro-paper
+Blog system based on https://github.com/satnaing/astro-paper, added [giscus](https://giscus.app/) integration
 
 # AstroPaper 📄
 

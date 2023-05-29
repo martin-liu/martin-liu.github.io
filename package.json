@@ -17,8 +17,10 @@
   },
   "dependencies": {
     "@astrojs/rss": "^2.4.1",
+    "@astrojs/vercel": "^3.4.0",
     "@resvg/resvg-js": "^2.4.1",
-    "astro": "^2.4.5",
+    "astro": "^2.5.5",
+    "astro-compress": "^1.1.46",
     "fuse.js": "^6.6.2",
     "github-slugger": "^2.0.0",
     "remark-collapse": "^0.1.2",

@@ -5,7 +5,7 @@ title: "About"
 
 ## Me
 
-Focused and curious engineer focus on Data & ML.
+Focused and curious engineer working on Data & ML.
 
 ### Path
 
@@ -18,7 +18,3 @@ Focused and curious engineer focus on Data & ML.
 
 - [Linkedin](https://www.linkedin.com/in/hflhmartin/)
 - [Github](https://github.com/martin-liu)
-
-## This Blog
-
-Customized from https://github.com/satnaing/astro-paper

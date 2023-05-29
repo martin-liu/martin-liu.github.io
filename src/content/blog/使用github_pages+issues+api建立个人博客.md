@@ -11,6 +11,8 @@ tags:
 description: 简单易行不要钱。 `不需要数据库，不需要服务器，不需要域名`， 完全自定义的纯HTML/JS/CSS代码，不需要学各种static site generator的玩法，又能实现独一无二的个人博客。
 ---
 
+[2023-05-28] 本博客已经基于[astro-paper](https://github.com/satnaing/astro-paper) + [giscus](https://giscus.app/)重写
+
 [2018-09-27] 此文已经 outdated，我使用 angular 6 重写了这个 blog system. 现在只需 fork 并简单操作即可使用。see [instructions](https://github.com/martin-liu/martin-liu.github.io#how-to-use-it).
 不过原理仍是类似的，此文可作为参考.
 

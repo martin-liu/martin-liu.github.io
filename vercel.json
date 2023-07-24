@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/chatgpt/",
-      "destination": "https://chat-gpt-next-web-martin-liu.vercel.app/api/openai/"
+      "destination": "https://chat-gpt-next-web-martin-liu.vercel.app/"
     },
     {
       "source": "/chatgpt/:match*",
-      "destination": "https://chat-gpt-next-web-martin-liu.vercel.app/api/openai/:match*"
+      "destination": "https://chat-gpt-next-web-martin-liu.vercel.app/:match*"
     },
     {
       "source": "/",

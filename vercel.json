@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/chatgpt/",
+      "destination": "https://chat-gpt-next-web-martin-liu.vercel.app/api/openai/"
+    },
+    {
+      "source": "/chatgpt/:match*",
+      "destination": "https://chat-gpt-next-web-martin-liu.vercel.app/api/openai/:match*"
+    },
+    {
+      "source": "/",
+      "destination": "https://martin-liu-github-io-5kjn.vercel.app/"
+    },
+    {
+      "source": "/:match*",
+      "destination": "https://martin-liu-github-io-5kjn.vercel.app/:match*"
+    }
+  ]
+}

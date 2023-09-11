@@ -5,14 +5,15 @@ title: "About"
 
 ## Me
 
-Focused and curious engineer working on Data & ML.
+Focus on Data & ML.
 
 ### Path
 
 ⬇ Data Governance Products (data lineage/monitoring/ops)  
 ⬇ FAAS Data Platform (Deployment/UI/Workflow generation)  
 ⬇ ML Feature Plaftorm (e2e ML feature lifecycle management)  
-⬇ ML Platform (Model Serving, Model CI/CD, Realtime ML, RL, LLM)
+⬇ ML Platform (Model Serving, Model CI/CD, Realtime ML, RL, LLM)  
+⬇ LLM Hallucination
 
 ### Links
 

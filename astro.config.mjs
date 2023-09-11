@@ -44,9 +44,6 @@ export default defineConfig({
     },
   },
   output: "hybrid",
-  experimental: {
-    hybridOutput: true,
-  },
   adapter: vercel({
     analytics: true,
   }),

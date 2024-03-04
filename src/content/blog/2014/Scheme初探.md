@@ -545,7 +545,7 @@ var Y = function (F) {
 ```
 
 这个`Y`就是我们的 Y-combinator 了，只要把一个形似`F`的函数丢给`Y`，就可以获得一个完美的递归函数了！
-我们已经测试过了`G(G)`, 让我们再试试`Y(F)`。咦，不对啊，`Uncaught RangeError: Maximum call stack size exceeded`，难道我们推理有误？
+我们已经测试过了`G(G)`, 让我们再试试`Y(F)`。咦，不对啊，`Maximum call stack size exceeded`，难道我们推理有误？
 
 好吧，这是最后一个坑了。问题出在`F(f(f))`，实际上我们需要在`else`分支执行`f(f)(n-1)`，而由于 JS 是没有[Lazy Evaluation](http://en.wikipedia.org/wiki/Lazy_evaluation)的，于是`F(f(f))`里的`f(f)`会直接执行。让我们来 fix 这个 bug:
 
